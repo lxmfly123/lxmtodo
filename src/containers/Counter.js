@@ -1,5 +1,13 @@
+import React from 'react'
 import { connect } from 'react-redux'
-import _Counter from '../components/Counter'
+// import _Counter from '../components/Counter'
+
+let Counter = props => {
+  const { count } = props;
+  return (
+    <span>{count} item{count > 1 ? 's' : null} left</span>
+  )
+}
 
 const getUncompletedTodosCount = todos => {
   return todos.filter(todo => !todo.isCompleted).length;
@@ -9,9 +17,9 @@ const mapStateToProps = (state, ownProps) => ({
   count: getUncompletedTodosCount(state.todos)
 })
 
-const Counter = connect(
+Counter = connect(
   mapStateToProps
-)(_Counter)
+)(Counter)
 
 
 export default Counter

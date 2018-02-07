@@ -6,6 +6,7 @@ import {
   REMOVE_TODO, 
   UPDATE_TODO, 
   CLEAR_TODOS,
+  CLEAR_COMPLETED, 
   BATCH_TOGGLE_TODOS,
 } from '../actions'
 import { combineReducers } from 'redux'
@@ -40,6 +41,8 @@ const todos = (state = [], action) => {
       })
     case CLEAR_TODOS: 
       return [];
+    case CLEAR_COMPLETED: 
+      return state.filter(todo => !todo.isCompleted);
     case BATCH_TOGGLE_TODOS: 
       return batchToogleTodos(state)
     default: 

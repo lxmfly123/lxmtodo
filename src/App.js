@@ -7,6 +7,7 @@ import React from 'react';
 import AddTodo from './containers/AddTodo'
 import ClearTodos from './containers/ClearTodos'
 import BatchToggleTodos from './containers/BatchToggleTodos'
+import ClearCompleted from './containers/ClearCompleted'
 import VisibleTodoList from './containers/VisibleTodoList'
 import Footer from './components/Footer'
 
@@ -36,6 +37,7 @@ const App = (props) => {
       <ClearTodos />
       <BatchToggleTodos />
       <VisibleTodoList />
+      <ClearCompleted />
       <Footer />
     </div>
   );

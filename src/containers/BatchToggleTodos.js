@@ -4,16 +4,7 @@ import { batchToggleTodos } from '../actions'
 
 let BatchToggleTodos = ({ dispatch }) => {
   return (
-    <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault()
-          dispatch(batchToggleTodos())
-        }}
-      >
-        <button type="submit">Toggle All</button>
-      </form>
-    </div>
+    <button onClick={e => {dispatch(batchToggleTodos())}}>Toggle All</button>
   )
 }
 BatchToggleTodos = connect()(BatchToggleTodos);

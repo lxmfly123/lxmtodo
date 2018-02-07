@@ -4,17 +4,8 @@ import { clearTodos } from '../actions'
 
 let ClearTodos = ({ dispatch }) => {
   return (
-    <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault()
-          dispatch(clearTodos())
-        }}
-      >
-        <button type="submit">Clear</button>
-      </form>
-    </div>
-  )
+    <button onClick={e => {dispatch(clearTodos())}}>Clear</button>
+  );
 }
 ClearTodos = connect()(ClearTodos);
 
