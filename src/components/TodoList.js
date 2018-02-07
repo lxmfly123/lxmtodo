@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Todo from './Todo'
 
 const TodoList = (props) => {
-  const { onTodoClick, onRemoveClick, toggleEditing, onEditingDone, todos } = props;
+  const { onTodoClick, onRemoveClick, onEditingDone, todos } = props;
   return (
     <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
       {todos.map(todo => {
@@ -13,7 +13,6 @@ const TodoList = (props) => {
             {...todo} 
             onClick={e => {onTodoClick(todo.id)}} 
             onRemoveClick={e => {onRemoveClick(todo.id)}} 
-            toggleEditing={e => {toggleEditing(todo.id)}} 
             onEditingDone={text => {onEditingDone(todo.id, text)}}
           />
         )
@@ -25,6 +24,7 @@ const TodoList = (props) => {
 TodoList.propTypes = {
   onTodoClick: PropTypes.func.isRequired,
   onRemoveClick: PropTypes.func.isRequired,
+  onEditingDone: PropTypes.func.isRequired,
   todos: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
