@@ -1,4 +1,13 @@
-import {VisibilityFilter, SET_VISIBILITY_FILTER, TOGGLE_TODO, ADD_TODO, REMOVE_TODO, UPDATE_TODO } from '../actions'
+import {
+  VisibilityFilter, 
+  SET_VISIBILITY_FILTER, 
+  TOGGLE_TODO, 
+  ADD_TODO, 
+  REMOVE_TODO, 
+  UPDATE_TODO, 
+  CLEAR_TODOS,
+  BATCH_TOGGLE_TODOS,
+} from '../actions'
 import { combineReducers } from 'redux'
 
 const visibilityFilter = (state = VisibilityFilter.SHOW_ALL, action) => {
@@ -9,6 +18,11 @@ const visibilityFilter = (state = VisibilityFilter.SHOW_ALL, action) => {
       return state
   }
 };
+
+const batchToogleTodos = todos => {
+  const uncompletedTodosExist = todos.filter(todo => !todo.isCompleted).length;
+  return todos.map(todo => uncompletedTodosExist && todo.isCompleted ? todo : { ...todo, isCompleted: !todo.isCompleted });
+}
 
 const todos = (state = [], action) => {
   switch (action.type) {
@@ -24,6 +38,10 @@ const todos = (state = [], action) => {
       return state.map(todo => {
         return todo.id === action.id ? { ...todo, text: action.text } : todo;
       })
+    case CLEAR_TODOS: 
+      return [];
+    case BATCH_TOGGLE_TODOS: 
+      return batchToogleTodos(state)
     default: 
       return state;
   }

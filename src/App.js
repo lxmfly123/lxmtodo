@@ -5,6 +5,8 @@ import React from 'react';
 // import TodoList from './components/TodoList'
 
 import AddTodo from './containers/AddTodo'
+import ClearTodos from './containers/ClearTodos'
+import BatchToggleTodos from './containers/BatchToggleTodos'
 import VisibleTodoList from './containers/VisibleTodoList'
 import Footer from './components/Footer'
 
@@ -31,6 +33,8 @@ const App = (props) => {
   return (
     <div>
       <AddTodo />
+      <ClearTodos />
+      <BatchToggleTodos />
       <VisibleTodoList />
       <Footer />
     </div>
