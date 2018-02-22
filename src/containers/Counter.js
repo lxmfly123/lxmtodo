@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 let Counter = props => {
   const { count } = props;
   return (
-    <span>{count} item{count > 1 ? 's' : null} left</span>
+    <span className='todo-count' >{count} item{count > 1 ? 's' : null} left.</span>
   )
 }
 

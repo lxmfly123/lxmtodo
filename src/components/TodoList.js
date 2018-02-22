@@ -5,7 +5,7 @@ import Todo from './Todo'
 const TodoList = (props) => {
   const { onTodoClick, onRemoveClick, onEditingDone, todos } = props;
   return (
-    <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
+    <ul className='todo-list'>
       {todos.map(todo => {
         return (
           <Todo 

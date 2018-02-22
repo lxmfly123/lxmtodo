@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import FA from 'react-fontawesome'
 
 class Todo extends React.Component {
   state = {
@@ -15,14 +16,42 @@ class Todo extends React.Component {
     let isEditing = this.state.isEditing;
     let toggleEditing = this.toggleEditing;
     return (
-      <li
-        style={{ display: 'flex',
-                 flexFlow: 'row wrap',
-                 alignItems: 'center',
-                 justifyContent: 'space-between',
+      <li className={ [isEditing ? 'editing' : '', isCompleted ? 'completed' : ''].join(' ') }>
+        <div className='view'>
+          <FA
+            className={ ['toggle', !isCompleted ? '' : 'checked'].join(' ') }
+            name='check'
+            onClick={e => onClick()}
+          />
+          {
+            !isEditing ? 
+            <label onDoubleClick={toggleEditing}>{text}</label> : 
+            <input 
+              type="text" 
+              className='edit'
+              autoFocus 
+              value={this.state.text}
+              onChange={e => {this.setState({ text: e.target.value })}}
+              onFocus={e => { e.target.selectionStart = e.target.value.length }}
+              onBlur={e => {
+                onEditingDone(this.state.text);
+                toggleEditing();
               }}
-      >
-        <span>
+              onKeyDown={e => {
+                if (e.keyCode === 13) {
+                  onEditingDone(this.state.text);
+                  toggleEditing();
+                }
+              }}
+            />
+          }
+          <button className='destroy' onClick={onRemoveClick}></button>
+        </div>
+
+
+
+
+        {/* <span>
           <span onClick={onClick}>{isCompleted ? '[x]' : '[ ]'}</span>
           {!isEditing ? 
             <span 
@@ -52,7 +81,7 @@ class Todo extends React.Component {
             />
           }
         </span>
-        <span onClick={onRemoveClick}>x</span>
+        <span onClick={onRemoveClick}>x</span> */}
       </li>
     );
   }

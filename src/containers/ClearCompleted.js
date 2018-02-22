@@ -4,7 +4,7 @@ import { clearCompleted } from '../actions'
 
 let ClearCompleted = ({ dispatch }) => {
   return (
-    <button onClick={e => {dispatch(clearCompleted())}}>Clear Completed</button>
+    <button className='clear-completed' onClick={e => {dispatch(clearCompleted())}}>Clear Completed</button>
   )
 }
 ClearCompleted = connect()(ClearCompleted);

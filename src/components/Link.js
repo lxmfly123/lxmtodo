@@ -4,12 +4,16 @@ import PropTypes from 'prop-types'
 const Link = (props) => {
   const { onClick, isActive, children } = props;
   return (
-    isActive ? 
-      <span>{children}</span> : 
-      <a href='' onClick={e => {
-        e.preventDefault();
-        onClick();
-      }}>{children}</a>
+    <li>
+      <a
+        href='' 
+        onClick={e => {
+          e.preventDefault();
+          onClick();
+        }}
+        className={ isActive ? 'selected' : null}
+      >{children}</a>
+    </li>
   );
 };
 

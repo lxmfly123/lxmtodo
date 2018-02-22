@@ -4,11 +4,11 @@ import React from 'react';
 // import Todo from './components/Todo'
 // import TodoList from './components/TodoList'
 
-import AddTodo from './containers/AddTodo'
-import ClearTodos from './containers/ClearTodos'
-import BatchToggleTodos from './containers/BatchToggleTodos'
-import ClearCompleted from './containers/ClearCompleted'
-import VisibleTodoList from './containers/VisibleTodoList'
+import './index.css'
+import 'font-awesome/css/font-awesome.min.css'
+
+import Header from './components/Header'
+import Main from './components/Main'
 import Footer from './components/Footer'
 
 
@@ -32,12 +32,9 @@ import Footer from './components/Footer'
 
 const App = (props) => {
   return (
-    <div>
-      <AddTodo />
-      <ClearTodos />
-      <BatchToggleTodos />
-      <VisibleTodoList />
-      <ClearCompleted />
+    <div className='todoapp'>
+      <Header />
+      <Main />
       <Footer />
     </div>
   );
